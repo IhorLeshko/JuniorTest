@@ -13,6 +13,8 @@
 		C3A079ED2B04BEB50074C3BF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A079EC2B04BEB50074C3BF /* Persistence.swift */; };
 		C3A079F02B04BEB50074C3BF /* JuniorTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3A079EE2B04BEB50074C3BF /* JuniorTest.xcdatamodeld */; };
 		C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */; };
+		C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */; };
+		C3EEEF642B04D44E00FCEE2D /* JTTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		C3A079EC2B04BEB50074C3BF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C3A079EF2B04BEB50074C3BF /* JuniorTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JuniorTest.xcdatamodel; sourceTree = "<group>"; };
 		C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHomeView.swift; sourceTree = "<group>"; };
+		C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHeaderView.swift; sourceTree = "<group>"; };
+		C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +59,12 @@
 		C3A079E22B04BEB40074C3BF /* JuniorTest */ = {
 			isa = PBXGroup;
 			children = (
+				C3EEEF5E2B04D11700FCEE2D /* Model */,
+				C3EEEF5D2B04D11300FCEE2D /* ViewModel */,
+				C3EEEF5C2B04D10D00FCEE2D /* View */,
+				C3EEEF5F2B04D12900FCEE2D /* Resources */,
 				C3A079E32B04BEB40074C3BF /* JuniorTestApp.swift */,
-				C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */,
 				C3A079E72B04BEB50074C3BF /* Assets.xcassets */,
-				C3A079EC2B04BEB50074C3BF /* Persistence.swift */,
-				C3A079EE2B04BEB50074C3BF /* JuniorTest.xcdatamodeld */,
 				C3A079E92B04BEB50074C3BF /* Preview Content */,
 			);
 			path = JuniorTest;
@@ -71,6 +76,47 @@
 				C3A079EA2B04BEB50074C3BF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3EEEF5C2B04D10D00FCEE2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */,
+				C3EEEF602B04D16200FCEE2D /* Components */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3EEEF5D2B04D11300FCEE2D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C3EEEF5E2B04D11700FCEE2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C3EEEF5F2B04D12900FCEE2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C3A079EC2B04BEB50074C3BF /* Persistence.swift */,
+				C3A079EE2B04BEB50074C3BF /* JuniorTest.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C3EEEF602B04D16200FCEE2D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */,
+				C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +191,8 @@
 			files = (
 				C3A079ED2B04BEB50074C3BF /* Persistence.swift in Sources */,
 				C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */,
+				C3EEEF642B04D44E00FCEE2D /* JTTabView.swift in Sources */,
+				C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */,
 				C3A079F02B04BEB50074C3BF /* JuniorTest.xcdatamodeld in Sources */,
 				C3A079E42B04BEB40074C3BF /* JuniorTestApp.swift in Sources */,
 			);
