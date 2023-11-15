@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct JTHomeView: View {
+    @StateObject private var vm = JTHomeViewModel()
     var body: some View {
         ZStack {
             Color("backgroundColor").ignoresSafeArea()
             
-            VStack {
+            LazyVStack {
                 JTHeaderView()
-                JTTabView()
+                JTTabView(movieGanres: vm.movieGenres)
+                
+                
+                Text("Popular Now")
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fontWeight(.semibold)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
+                
+                JTMoviesHorizontalListView(moviesData: vm.popularNowMovies)
+                
+                JTMoviesHorizontalListView(moviesData: vm.movies)
                 
                 Spacer()
             }
@@ -25,3 +38,5 @@ struct JTHomeView: View {
 #Preview {
     JTHomeView()
 }
+
+

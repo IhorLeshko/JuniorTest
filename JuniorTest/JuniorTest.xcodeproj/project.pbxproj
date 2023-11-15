@@ -7,26 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C323FA052B05387700D6CD00 /* JTMoviesHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */; };
 		C3A079E42B04BEB40074C3BF /* JuniorTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A079E32B04BEB40074C3BF /* JuniorTestApp.swift */; };
 		C3A079E82B04BEB50074C3BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A079E72B04BEB50074C3BF /* Assets.xcassets */; };
 		C3A079EB2B04BEB50074C3BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A079EA2B04BEB50074C3BF /* Preview Assets.xcassets */; };
 		C3A079ED2B04BEB50074C3BF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A079EC2B04BEB50074C3BF /* Persistence.swift */; };
 		C3A079F02B04BEB50074C3BF /* JuniorTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3A079EE2B04BEB50074C3BF /* JuniorTest.xcdatamodeld */; };
+		C3B37E142B04ECD70027C909 /* JTHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */; };
+		C3B37E162B04F1870027C909 /* JTMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B37E152B04F1870027C909 /* JTMovie.swift */; };
+		C3DC2A832B050641001943C9 /* JTConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC2A822B050641001943C9 /* JTConstraints.swift */; };
 		C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */; };
 		C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */; };
 		C3EEEF642B04D44E00FCEE2D /* JTTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */; };
+		C3EEEF662B04DC0D00FCEE2D /* JTMovieGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF652B04DC0D00FCEE2D /* JTMovieGenres.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMoviesHorizontalListView.swift; sourceTree = "<group>"; };
 		C3A079E02B04BEB40074C3BF /* JuniorTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuniorTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A079E32B04BEB40074C3BF /* JuniorTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuniorTestApp.swift; sourceTree = "<group>"; };
 		C3A079E72B04BEB50074C3BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3A079EA2B04BEB50074C3BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C3A079EC2B04BEB50074C3BF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C3A079EF2B04BEB50074C3BF /* JuniorTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JuniorTest.xcdatamodel; sourceTree = "<group>"; };
+		C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHomeViewModel.swift; sourceTree = "<group>"; };
+		C3B37E152B04F1870027C909 /* JTMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovie.swift; sourceTree = "<group>"; };
+		C3DC2A822B050641001943C9 /* JTConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTConstraints.swift; sourceTree = "<group>"; };
 		C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHomeView.swift; sourceTree = "<group>"; };
 		C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHeaderView.swift; sourceTree = "<group>"; };
 		C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTTabView.swift; sourceTree = "<group>"; };
+		C3EEEF652B04DC0D00FCEE2D /* JTMovieGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovieGenres.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +69,7 @@
 		C3A079E22B04BEB40074C3BF /* JuniorTest */ = {
 			isa = PBXGroup;
 			children = (
+				C3DC2A812B05062F001943C9 /* Helpers */,
 				C3EEEF5E2B04D11700FCEE2D /* Model */,
 				C3EEEF5D2B04D11300FCEE2D /* ViewModel */,
 				C3EEEF5C2B04D10D00FCEE2D /* View */,
@@ -78,6 +89,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C3DC2A812B05062F001943C9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC2A822B050641001943C9 /* JTConstraints.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C3EEEF5C2B04D10D00FCEE2D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +109,7 @@
 		C3EEEF5D2B04D11300FCEE2D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -97,6 +117,8 @@
 		C3EEEF5E2B04D11700FCEE2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3EEEF652B04DC0D00FCEE2D /* JTMovieGenres.swift */,
+				C3B37E152B04F1870027C909 /* JTMovie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +137,7 @@
 			children = (
 				C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */,
 				C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */,
+				C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -190,10 +213,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3A079ED2B04BEB50074C3BF /* Persistence.swift in Sources */,
+				C3EEEF662B04DC0D00FCEE2D /* JTMovieGenres.swift in Sources */,
+				C3DC2A832B050641001943C9 /* JTConstraints.swift in Sources */,
+				C3B37E162B04F1870027C909 /* JTMovie.swift in Sources */,
 				C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */,
+				C3B37E142B04ECD70027C909 /* JTHomeViewModel.swift in Sources */,
 				C3EEEF642B04D44E00FCEE2D /* JTTabView.swift in Sources */,
 				C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */,
 				C3A079F02B04BEB50074C3BF /* JuniorTest.xcdatamodeld in Sources */,
+				C323FA052B05387700D6CD00 /* JTMoviesHorizontalListView.swift in Sources */,
 				C3A079E42B04BEB40074C3BF /* JuniorTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
