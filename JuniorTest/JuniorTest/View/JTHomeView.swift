@@ -23,24 +23,12 @@ struct JTHomeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fontWeight(.semibold)
                     .padding(.vertical, 10)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(vm.movies, id: \.id) { movie in
-                            
-                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(movie.posterPath)")) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                                    .foregroundStyle(.white)
-                            }
-                            .frame(width: 100, height: 100)
-                            
-                        }
-                    }
-                    .padding(.horizontal, 15)
-                }
+                JTMoviesHorizontalListView(moviesData: vm.popularNowMovies)
+                
+                JTMoviesHorizontalListView(moviesData: vm.movies)
+                
                 Spacer()
             }
         }
@@ -50,3 +38,5 @@ struct JTHomeView: View {
 #Preview {
     JTHomeView()
 }
+
+

@@ -29,7 +29,7 @@ struct JTTabView: View {
                     }
                 }
             }
-            .padding(.horizontal, 15)
+            .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
         }
     }
 }
