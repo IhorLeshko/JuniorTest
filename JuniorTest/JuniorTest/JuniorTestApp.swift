@@ -13,7 +13,7 @@ struct JuniorTestApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            JTHomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
