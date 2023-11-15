@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class JTHomeViewModel: ObservableObject {
     // mock data
@@ -15,5 +16,68 @@ class JTHomeViewModel: ObservableObject {
         JTGenre(id: 3, name: "Family"),
         JTGenre(id: 4, name: "Shooter")
     ]
+    
+    
+    @Published var movies: [JTMovieResult] = []
+    
+    var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        getMovies()
+    }
+    
+    func getMovies() {
+        
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1") else { return }
+        
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.addValue(JTConstraints.apiKey, forHTTPHeaderField: "Authorization")
+        
+        // 1. create the publisher
+        URLSession.shared.dataTaskPublisher(for: request)
+        
+        // 2. subscribe publisher on background thread
+            .subscribe(on: DispatchQueue.global(qos: .background))
+        
+        // 3. recieve on main thread
+            .receive(on: DispatchQueue.main)
+        
+        // 4. tryMap (check if the data is fine)
+            .tryMap { (data, response) -> Data in
+                
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
+                }
+                
+                return data
+            }
+        // 5. Decode data in JTMovie model
+            .decode(type: JTMovie.self, decoder: JSONDecoder())
+        
+        // 6. Put item in app
+            .sink { (completion) in
+                // handle completion (optional)
+                
+                switch completion {
+                case .finished:
+                    print("finished")
+                case .failure(let error):
+                    print("There was an error: \(error)")
+                }
+                
+            } receiveValue: { [weak self] (returnedMovies) in
+                self?.movies = returnedMovies.results
+            }
+        
+        // 7. store (cancel sub if needed)
+            .store(in: &cancellables)
+        
+    }
     
 }

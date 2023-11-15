@@ -8,30 +8,42 @@
 import Foundation
 
 struct JTMovie: Codable {
-    let posterPath: String
+    let page: Int
+    let results: [JTMovieResult]
+    let totalPages, totalResults: Int
+
+    enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+struct JTMovieResult: Codable {
     let adult: Bool
-    let overview, releaseDate: String
+    let backdropPath: String
     let genreIDS: [Int]
     let id: Int
-    let originalTitle, originalLanguage, title, backdropPath: String
+    let originalLanguage: String
+    let originalTitle, overview: String
     let popularity: Double
-    let voteCount: Int
+    let posterPath, releaseDate, title: String
     let video: Bool
     let voteAverage: Double
-    
+    let voteCount: Int
+
     enum CodingKeys: String, CodingKey {
-        case posterPath = "poster_path"
-        case adult, overview
-        case releaseDate = "release_date"
+        case adult
+        case backdropPath = "backdrop_path"
         case genreIDS = "genre_ids"
         case id
-        case originalTitle = "original_title"
         case originalLanguage = "original_language"
-        case title
-        case backdropPath = "backdrop_path"
-        case popularity
-        case voteCount = "vote_count"
-        case video
+        case originalTitle = "original_title"
+        case overview, popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title, video
         case voteAverage = "vote_average"
+        case voteCount = "vote_count"
     }
 }
