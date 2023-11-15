@@ -14,18 +14,16 @@ struct JTHomeView: View {
             Color("backgroundColor").ignoresSafeArea()
             
             LazyVStack {
+                
                 JTHeaderView()
+                
                 JTTabView(movieGanres: vm.movieGenres)
                 
-                
-                Text("Popular Now")
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .fontWeight(.semibold)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
+                JTListTitleView(title: "Popular Now")
                 
                 JTMoviesHorizontalListView(moviesData: vm.popularNowMovies)
+                
+                JTListTitleView(title: "Movies")
                 
                 JTMoviesHorizontalListView(moviesData: vm.movies)
                 
