@@ -18,18 +18,25 @@ class JTHomeViewModel: ObservableObject {
     ]
     
     
+    @Published var popularNowMovies: [JTMovieResult] = []
+    
     @Published var movies: [JTMovieResult] = []
     
     var cancellables = Set<AnyCancellable>()
     
-    init() {
-        getMovies()
+    enum HTTPMovieFilter: String {
+        case popular = "popular"
+        case topRated = "top_rated"
     }
     
-    func getMovies() {
+    init() {
+        fetchMovies(filterWith: HTTPMovieFilter.popular)
+        fetchMovies(filterWith: HTTPMovieFilter.topRated)
+    }
+    
+    func fetchMovies(filterWith apiMovieFilter: HTTPMovieFilter) {
         
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1") else { return }
-        
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(apiMovieFilter.rawValue)?language=en-US&page=1") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -72,7 +79,13 @@ class JTHomeViewModel: ObservableObject {
                 }
                 
             } receiveValue: { [weak self] (returnedMovies) in
-                self?.movies = returnedMovies.results
+                
+                switch apiMovieFilter {
+                case .popular:
+                    self?.popularNowMovies = returnedMovies.results
+                case .topRated:
+                    self?.movies = returnedMovies.results
+                }
             }
         
         // 7. store (cancel sub if needed)
