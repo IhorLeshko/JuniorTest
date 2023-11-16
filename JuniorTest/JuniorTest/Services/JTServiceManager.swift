@@ -26,7 +26,7 @@ class JTServiceManager {
     }
     
     func fetchMovieGenres() -> AnyPublisher<JTMovieGenres, Error> {
-        print(remoteService.fetchGenres())
+
         return remoteService.fetchGenres()
             .catch { [weak self] error in
                 return self?.offlineService.getOfflineGenres(withKey: JTRemoteService.HTTPMoviePath.movieGenresPath) ?? Empty().eraseToAnyPublisher()

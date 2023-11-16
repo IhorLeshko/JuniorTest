@@ -19,7 +19,7 @@ struct JTMovie: Codable {
     }
 }
 
-struct JTMovieResult: Codable {
+struct JTMovieResult: Codable, Hashable {
     let adult: Bool
     let backdropPath: String
     let genreIDS: [Int]

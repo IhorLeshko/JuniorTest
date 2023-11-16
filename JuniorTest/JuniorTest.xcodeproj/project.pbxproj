@@ -10,6 +10,7 @@
 		C323FA052B05387700D6CD00 /* JTMoviesHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */; };
 		C323FA072B053AA600D6CD00 /* JTListTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323FA062B053AA600D6CD00 /* JTListTitleView.swift */; };
 		C366FA262B0605B9005150E5 /* JTRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366FA252B0605B9005150E5 /* JTRemoteService.swift */; };
+		C385A7BA2B0685A1008ED9E7 /* JTNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385A7B92B0685A1008ED9E7 /* JTNetworkMonitor.swift */; };
 		C3A070532B061D0A00D96ED5 /* JTOfflineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A070522B061D0A00D96ED5 /* JTOfflineService.swift */; };
 		C3A070552B061D6B00D96ED5 /* JTServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A070542B061D6B00D96ED5 /* JTServiceManager.swift */; };
 		C3A079E42B04BEB40074C3BF /* JuniorTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A079E32B04BEB40074C3BF /* JuniorTestApp.swift */; };
@@ -19,6 +20,7 @@
 		C3A079F02B04BEB50074C3BF /* JuniorTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3A079EE2B04BEB50074C3BF /* JuniorTest.xcdatamodeld */; };
 		C3B37E142B04ECD70027C909 /* JTHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */; };
 		C3B37E162B04F1870027C909 /* JTMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B37E152B04F1870027C909 /* JTMovie.swift */; };
+		C3D372B42B0661BC0029A879 /* JTMoviesHlistByGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D372B32B0661BC0029A879 /* JTMoviesHlistByGenres.swift */; };
 		C3DC2A832B050641001943C9 /* JTConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC2A822B050641001943C9 /* JTConstraints.swift */; };
 		C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */; };
 		C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */; };
@@ -30,6 +32,7 @@
 		C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMoviesHorizontalListView.swift; sourceTree = "<group>"; };
 		C323FA062B053AA600D6CD00 /* JTListTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTListTitleView.swift; sourceTree = "<group>"; };
 		C366FA252B0605B9005150E5 /* JTRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTRemoteService.swift; sourceTree = "<group>"; };
+		C385A7B92B0685A1008ED9E7 /* JTNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTNetworkMonitor.swift; sourceTree = "<group>"; };
 		C3A070522B061D0A00D96ED5 /* JTOfflineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTOfflineService.swift; sourceTree = "<group>"; };
 		C3A070542B061D6B00D96ED5 /* JTServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTServiceManager.swift; sourceTree = "<group>"; };
 		C3A079E02B04BEB40074C3BF /* JuniorTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuniorTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +43,7 @@
 		C3A079EF2B04BEB50074C3BF /* JuniorTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JuniorTest.xcdatamodel; sourceTree = "<group>"; };
 		C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHomeViewModel.swift; sourceTree = "<group>"; };
 		C3B37E152B04F1870027C909 /* JTMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovie.swift; sourceTree = "<group>"; };
+		C3D372B32B0661BC0029A879 /* JTMoviesHlistByGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMoviesHlistByGenres.swift; sourceTree = "<group>"; };
 		C3DC2A822B050641001943C9 /* JTConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTConstraints.swift; sourceTree = "<group>"; };
 		C3EEEF5A2B04C1F100FCEE2D /* JTHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHomeView.swift; sourceTree = "<group>"; };
 		C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHeaderView.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 				C3A070542B061D6B00D96ED5 /* JTServiceManager.swift */,
 				C366FA252B0605B9005150E5 /* JTRemoteService.swift */,
 				C3A070522B061D0A00D96ED5 /* JTOfflineService.swift */,
+				C385A7B92B0685A1008ED9E7 /* JTNetworkMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */,
 				C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */,
 				C323FA062B053AA600D6CD00 /* JTListTitleView.swift */,
+				C3D372B32B0661BC0029A879 /* JTMoviesHlistByGenres.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -239,9 +245,11 @@
 				C3A070552B061D6B00D96ED5 /* JTServiceManager.swift in Sources */,
 				C3B37E162B04F1870027C909 /* JTMovie.swift in Sources */,
 				C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */,
+				C385A7BA2B0685A1008ED9E7 /* JTNetworkMonitor.swift in Sources */,
 				C3B37E142B04ECD70027C909 /* JTHomeViewModel.swift in Sources */,
 				C3EEEF642B04D44E00FCEE2D /* JTTabView.swift in Sources */,
 				C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */,
+				C3D372B42B0661BC0029A879 /* JTMoviesHlistByGenres.swift in Sources */,
 				C366FA262B0605B9005150E5 /* JTRemoteService.swift in Sources */,
 				C3A079F02B04BEB50074C3BF /* JuniorTest.xcdatamodeld in Sources */,
 				C323FA052B05387700D6CD00 /* JTMoviesHorizontalListView.swift in Sources */,

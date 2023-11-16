@@ -20,7 +20,7 @@ class JTHomeViewModel: ObservableObject {
     
     @Published private(set) var movies: [JTMovieResult] = []
     
-    @Published var selectedGenre: String? {
+    @Published var selectedGenre: Int? = 0 {
         didSet {
             fetchMoviesWithOffline(withPath: JTRemoteService.HTTPMoviePath.searchByCategoryPath, withGenres: selectedGenrePath)
         }
@@ -29,8 +29,8 @@ class JTHomeViewModel: ObservableObject {
     var selectedGenrePath: String {
         let path = "&with_genres="
         
-        if let id = selectedGenre {
-            return path + id
+        if let id = selectedGenre, id != 0 {
+            return path + String(id)
         } else {
             return ""
         }

@@ -11,6 +11,8 @@ struct JTMoviesHorizontalListView: View {
     
     var moviesData: [JTMovieResult]
     
+    @Binding var refreshId: UUID
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -19,10 +21,13 @@ struct JTMoviesHorizontalListView: View {
                     AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(movie.posterPath)")) { image in
                         image.resizable()
                     } placeholder: {
-                        Text(movie.originalTitle)
-                            .font(.callout)
-                            .foregroundStyle(.white)
-                        
+                        VStack(spacing: 10) {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
+                            Text(movie.originalTitle)
+                                .font(.callout)
+                                .foregroundStyle(.white)
+                        }
                     }
                     .frame(width: 100, height: 140)
                     .clipShape(
@@ -32,6 +37,7 @@ struct JTMoviesHorizontalListView: View {
             }
             .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
         }
+        .id(refreshId)
     }
 }
 

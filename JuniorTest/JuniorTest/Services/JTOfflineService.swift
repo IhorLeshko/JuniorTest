@@ -11,7 +11,7 @@ import Combine
 class JTOfflineService {
     
     private let defaults = UserDefaults.standard
-    private let userDeafaultsKey: JTRemoteService.HTTPMoviePath = .popularPath
+    private let userDefaultsKeys: JTRemoteService.HTTPMoviePath = .movieGenresPath
     
     init() {
         
@@ -19,13 +19,13 @@ class JTOfflineService {
     
     func saveOffline(movie: JTMovie, withKey userDefaultsKey: JTRemoteService.HTTPMoviePath) {
         if let encoded: Data = try? JSONEncoder().encode(movie) {
-            defaults.set(encoded, forKey: userDeafaultsKey.rawValue)
+            defaults.set(encoded, forKey: userDefaultsKey.rawValue)
         }
     }
     
     func getOffline(withKey userDefaultsKey: JTRemoteService.HTTPMoviePath) -> AnyPublisher<JTMovie, Error> {
         do {
-            guard let data: Data = defaults.object(forKey: userDeafaultsKey.rawValue) as? Data else {
+            guard let data: Data = defaults.object(forKey: userDefaultsKey.rawValue) as? Data else {
                 return Just(JTMovie(page: 0, results: [], totalPages: 0, totalResults: 0))
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
@@ -44,13 +44,14 @@ class JTOfflineService {
     
     func saveOfflineGenres(movie: JTMovieGenres, withKey userDefaultsKey: JTRemoteService.HTTPMoviePath) {
         if let encoded: Data = try? JSONEncoder().encode(movie) {
-            defaults.set(encoded, forKey: userDeafaultsKey.rawValue)
+            defaults.set(encoded, forKey: userDefaultsKey.rawValue)
+            print(userDefaultsKey.rawValue)
         }
     }
     
     func getOfflineGenres(withKey userDefaultsKey: JTRemoteService.HTTPMoviePath) -> AnyPublisher<JTMovieGenres, Error> {
         do {
-            guard let data: Data = defaults.object(forKey: userDeafaultsKey.rawValue) as? Data else {
+            guard let data: Data = defaults.object(forKey: userDefaultsKey.rawValue) as? Data else {
                 return Just(JTMovieGenres(genres: []))
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()

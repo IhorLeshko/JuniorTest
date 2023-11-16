@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct JuniorTestApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject var networkMonitor = NetworkMonitor()
 
     var body: some Scene {
         WindowGroup {
             JTHomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(networkMonitor)
         }
     }
 }

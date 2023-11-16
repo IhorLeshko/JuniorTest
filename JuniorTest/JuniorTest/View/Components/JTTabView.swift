@@ -9,24 +9,26 @@ import SwiftUI
 
 struct JTTabView: View {
     @ObservedObject var vm: JTHomeViewModel
-    var movieGanres: [JTGenre]
+    @Binding var refreshMovieListByGenre: UUID
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 Button {
-                    vm.selectedGenre = nil
+                    vm.selectedGenre = 0
+                    refreshMovieListByGenre = UUID()
                 } label: {
                     Text("All")
-                        .tabButtonStyle()
+                        .tabButtonStyle(vm: vm)
                 }
                 
-                ForEach(movieGanres, id: \.id) { tab in
+                ForEach(vm.movieGenres, id: \.id) { tab in
                     Button {
-                        vm.selectedGenre = String(tab.id)
+                        vm.selectedGenre = tab.id
+                        refreshMovieListByGenre = UUID()
                     } label: {
                         Text(tab.name)
-                            .tabButtonStyle()
+                            .tabButtonStyle(vm: vm, tabID: tab.id)
                     }
                 }
             }
@@ -38,23 +40,24 @@ struct JTTabView: View {
 #Preview {
     ZStack {
         Color("backgroundColor").ignoresSafeArea()
-        JTTabView(vm: JTHomeViewModel(), movieGanres: [
-            JTGenre(id: 1, name: "Shooter"),
-            JTGenre(id: 2, name: "Family"),
-            JTGenre(id: 3, name: "Comedy")
-        ])
+        JTTabView(vm: JTHomeViewModel(), refreshMovieListByGenre: .constant(UUID()))
     }
 }
 
 private extension View {
-    func tabButtonStyle() -> some View {
-        self.foregroundStyle(.white)
+    func tabButtonStyle(vm: JTHomeViewModel, tabID: Int? = 0) -> some View {
+        self.foregroundStyle(tabID == vm.selectedGenre ? .black : .white)
             .font(.callout)
             .padding(.vertical, 6)
             .padding(.horizontal, 12)
             .background {
-                Capsule()
-                    .strokeBorder(.white, lineWidth: 1)
+                if tabID == vm.selectedGenre {
+                    Capsule()
+                        .foregroundStyle(.white)
+                } else {
+                    Capsule()
+                        .strokeBorder(.white, lineWidth: 1)
+                }
             }
     }
 }
