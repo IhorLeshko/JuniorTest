@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct JTHomeView: View {
+    
     @StateObject private var vm = JTHomeViewModel()
+    
     var body: some View {
         ZStack {
             Color("backgroundColor").ignoresSafeArea()
@@ -17,7 +19,9 @@ struct JTHomeView: View {
                 
                 JTHeaderView()
                 
-                JTTabView(movieGanres: vm.movieGenres)
+                JTTabView(vm: vm, movieGanres: vm.movieGenres)
+                
+                JTMoviesHorizontalListView(moviesData: vm.moviesByGenres)
                 
                 JTListTitleView(title: "Popular Now")
                 
@@ -27,7 +31,6 @@ struct JTHomeView: View {
                 
                 JTMoviesHorizontalListView(moviesData: vm.movies)
                 
-                Spacer()
             }
         }
     }

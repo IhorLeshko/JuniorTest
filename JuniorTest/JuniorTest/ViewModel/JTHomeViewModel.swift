@@ -9,34 +9,50 @@ import Foundation
 import Combine
 
 class JTHomeViewModel: ObservableObject {
-    // mock data
-    @Published private(set) var movieGenres: [JTGenre] = [
-        JTGenre(id: 1, name: "All"),
-        JTGenre(id: 2, name: "Comedy"),
-        JTGenre(id: 3, name: "Family"),
-        JTGenre(id: 4, name: "Shooter")
-    ]
     
+    @Published private(set) var movieGenres: [JTGenre] = [JTGenre(id: 0, name: "All")]
     
-    @Published var popularNowMovies: [JTMovieResult] = []
+    @Published private(set) var moviesByGenres: [JTMovieResult] = []
     
-    @Published var movies: [JTMovieResult] = []
+    @Published private(set) var popularNowMovies: [JTMovieResult] = []
+    
+    @Published private(set) var movies: [JTMovieResult] = []
+    
+    @Published var selectedGenre: String? {
+        didSet {
+            fetchMovies(withPath: HTTPMoviePath.searchByCategoryPath, withGanres: selectedGenrePath)
+        }
+    }
+    
+    var selectedGenrePath: String {
+        let path = "&with_genres="
+        
+        if let id = selectedGenre {
+            return path + id
+        } else {
+            return ""
+        }
+    }
     
     var cancellables = Set<AnyCancellable>()
     
-    enum HTTPMovieFilter: String {
-        case popular = "popular"
-        case topRated = "top_rated"
+    enum HTTPMoviePath: String {
+        case popularPath = "3/movie/popular?language=en-US&page=1"
+        case topRatedPath = "3/movie/top_rated?language=en-US&page=1"
+        case searchByCategoryPath = "3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
     }
-    
+    //"&with_genres=18"
     init() {
-        fetchMovies(filterWith: HTTPMovieFilter.popular)
-        fetchMovies(filterWith: HTTPMovieFilter.topRated)
+        fetchMovies(withPath: HTTPMoviePath.popularPath)
+        fetchMovies(withPath: HTTPMoviePath.topRatedPath)
+        fetchMovies(withPath: HTTPMoviePath.searchByCategoryPath, withGanres: selectedGenrePath)
+        fetchGenres()
     }
     
-    func fetchMovies(filterWith apiMovieFilter: HTTPMovieFilter) {
+    func fetchMovies(withPath apiMoviePath: HTTPMoviePath, withGanres ganres: String? = "") {
         
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(apiMovieFilter.rawValue)?language=en-US&page=1") else { return }
+        guard let url = URL(string: "\(JTConstraints.http)" + "\(apiMoviePath.rawValue)" + "\(ganres ?? "")") else { return }
+        print(url)
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -80,11 +96,13 @@ class JTHomeViewModel: ObservableObject {
                 
             } receiveValue: { [weak self] (returnedMovies) in
                 
-                switch apiMovieFilter {
-                case .popular:
+                switch apiMoviePath {
+                case .popularPath:
                     self?.popularNowMovies = returnedMovies.results
-                case .topRated:
+                case .topRatedPath:
                     self?.movies = returnedMovies.results
+                case .searchByCategoryPath:
+                    self?.moviesByGenres = returnedMovies.results
                 }
             }
         
@@ -93,4 +111,45 @@ class JTHomeViewModel: ObservableObject {
         
     }
     
+    func fetchGenres() {
+        guard let url = URL(string: "https://api.themoviedb.org/3/genre/movie/list?language=en") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.addValue(JTConstraints.apiKey, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTaskPublisher(for: request)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap { (data, response) -> Data in
+                
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
+                }
+                
+                return data
+            }
+            .decode(type: JTMovieGenres.self, decoder: JSONDecoder())
+        
+            .sink { (completion) in
+                
+                switch completion {
+                case .finished:
+                    print("finished")
+                case .failure(let error):
+                    print("There was an error: \(error)")
+                }
+                
+            } receiveValue: { [weak self] (returnedGenres) in
+                self?.movieGenres = returnedGenres.genres
+            }
+        
+        // 7. store (cancel sub if needed)
+            .store(in: &cancellables)
+        
+    }
 }
