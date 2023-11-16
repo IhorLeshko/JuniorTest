@@ -19,8 +19,10 @@ struct JTMoviesHorizontalListView: View {
                     AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(movie.posterPath)")) { image in
                         image.resizable()
                     } placeholder: {
-                        ProgressView()
+                        Text(movie.originalTitle)
+                            .font(.callout)
                             .foregroundStyle(.white)
+                        
                     }
                     .frame(width: 100, height: 140)
                     .clipShape(
