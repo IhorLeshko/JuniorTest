@@ -45,7 +45,6 @@ class JTOfflineService {
     func saveOfflineGenres(movie: JTMovieGenres, withKey userDefaultsKey: JTRemoteService.HTTPMoviePath) {
         if let encoded: Data = try? JSONEncoder().encode(movie) {
             defaults.set(encoded, forKey: userDefaultsKey.rawValue)
-            print(userDefaultsKey.rawValue)
         }
     }
     

@@ -26,7 +26,6 @@ class JTServiceManager {
     }
     
     func fetchMovieGenres() -> AnyPublisher<JTMovieGenres, Error> {
-
         return remoteService.fetchGenres()
             .catch { [weak self] error in
                 return self?.offlineService.getOfflineGenres(withKey: JTRemoteService.HTTPMoviePath.movieGenresPath) ?? Empty().eraseToAnyPublisher()
@@ -35,5 +34,13 @@ class JTServiceManager {
                 self?.offlineService.saveOfflineGenres(movie: genres, withKey: JTRemoteService.HTTPMoviePath.movieGenresPath)
             })
             .eraseToAnyPublisher()
+    }
+    
+    func addMovieToWatchList(movieID: Int) -> AnyPublisher<Void, Error> {
+        return remoteService.addMovieToWatchList(movieID: movieID)
+    }
+    
+    func fetchMoviesFromMyWatchList() -> AnyPublisher<JTMovie, Error> {
+        return remoteService.fetchMoviesFromMyWatchlist()
     }
 }

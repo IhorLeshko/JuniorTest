@@ -20,6 +20,8 @@ class JTHomeViewModel: ObservableObject {
     
     @Published private(set) var movies: [JTMovieResult] = []
     
+    @Published private(set) var moviesInMyWithList: [JTMovieResult] = []
+    
     @Published var selectedGenre: Int? = 0 {
         didSet {
             fetchMoviesWithOffline(withPath: JTRemoteService.HTTPMoviePath.searchByCategoryPath, withGenres: selectedGenrePath)
@@ -43,6 +45,7 @@ class JTHomeViewModel: ObservableObject {
         fetchMoviesWithOffline(withPath: JTRemoteService.HTTPMoviePath.popularPath)
         fetchMoviesWithOffline(withPath: JTRemoteService.HTTPMoviePath.topRatedPath)
         fetchMoviesWithOffline(withPath: JTRemoteService.HTTPMoviePath.searchByCategoryPath, withGenres: selectedGenrePath)
+        fetchMoviesFromMyWatchList()
     }
     
     func fetchMoviesWithOffline(withPath apiMoviePath: JTRemoteService.HTTPMoviePath, withGenres genres: String? = "") {
@@ -82,5 +85,34 @@ class JTHomeViewModel: ObservableObject {
             self?.movieGenres = returnedGenres.genres
         }
         .store(in: &cancellables)
+    }
+    
+    func addMovieToWatchList(movieID: Int) {
+        serviceManager.addMovieToWatchList(movieID: movieID)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("Successfully added to watchlist.")
+                    self.fetchMoviesFromMyWatchList()
+                case .failure(let error):
+                    print("Error adding to watchlist: \(error)")
+                }
+            } receiveValue: { _ in
+            }.store(in: &cancellables)
+    }
+    
+    func fetchMoviesFromMyWatchList() {
+        serviceManager.fetchMoviesFromMyWatchList()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("Successfully fetched watchlist.")
+                case .failure(let error):
+                    print("Error adding to watchlist: \(error)")
+                }
+            } receiveValue: { [weak self] movies in
+                self?.moviesInMyWithList = movies.results
+            }
+            .store(in: &cancellables)
     }
 }

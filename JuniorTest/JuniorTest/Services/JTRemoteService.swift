@@ -70,4 +70,64 @@ class JTRemoteService {
             .eraseToAnyPublisher()
     }
     
+    func addMovieToWatchList(movieID: Int) -> AnyPublisher<Void, Error> {
+        let url = URL(string: "https://api.themoviedb.org/3/account/20707019/watchlist")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.addValue("application/json", forHTTPHeaderField: "content-type")
+        request.addValue(JTConstraints.apiKey, forHTTPHeaderField: "Authorization")
+        
+        let parameters = [
+          "media_type": "movie",
+          "media_id": movieID,
+          "watchlist": true
+        ] as [String : Any]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.main)
+            .tryMap { (data, response) in
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchMoviesFromMyWatchlist() -> AnyPublisher<JTMovie, Error> {
+        
+        let url = URL(string: "https://api.themoviedb.org/3/account/20707019/watchlist/movies")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.addValue(JTConstraints.apiKey, forHTTPHeaderField: "Authorization")
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap { (data, response) -> Data in
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
+                }
+        
+                return data
+            }
+            .decode(type: JTMovie.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+    
 }
