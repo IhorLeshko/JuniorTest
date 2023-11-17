@@ -15,8 +15,9 @@ struct JTHomeView: View {
     
     @State private var showNetworkAlert = false
     @State private var showNetworkAlertSucsessfull = false
-    @State var showSearchSheet = false
     @State private var refreshMovieListByGenre = UUID()
+    
+    @State var showSearchSheet = false
     
     var body: some View {
         ZStack {
@@ -30,15 +31,15 @@ struct JTHomeView: View {
                         
                         JTTabView(vm: vm, refreshMovieListByGenre: $refreshMovieListByGenre)
                         
-                        JTMoviesHlistByGenres(vm: vm, geometryProxy: geo, refreshMovieListByGenre: $refreshMovieListByGenre)
+                        JTMoviesHlistByGenresView(vm: vm, geometryProxy: geo, refreshMovieListByGenre: $refreshMovieListByGenre)
                         
                         JTListTitleView(title: "Popular Now")
                         
-                        JTMoviesHorizontalListView(moviesData: vm.popularNowMovies, refreshId: $vm.refreshId)
+                        JTMoviesHListView(moviesData: vm.popularNowMovies, refreshId: $vm.refreshId)
                         
                         JTListTitleView(title: "Movies")
                         
-                        JTMoviesHorizontalListView(moviesData: vm.movies, refreshId: $vm.refreshId)
+                        JTMoviesHListView(moviesData: vm.movies, refreshId: $vm.refreshId)
                     }
                 }
             }

@@ -38,30 +38,3 @@ struct JTHeaderView: View {
         JTHeaderView(showSearchSheet: .constant(false))
     }
 }
-
-struct JTSearchListView: View {
-    @Environment(\.dismiss) var dismiss
-    @ObservedObject var vm: JTHomeViewModel
-    @State private var searchText = ""
-    
-    var body: some View {
-        NavigationStack {
-            List(vm.searchMovies, id: \.id) { movie in
-                Text(movie.title)
-            }
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
-            .onChange(of: searchText) { _ in
-                vm.searchMovies(withKeyLetters: searchText)
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
-        }
-        .searchable(text: $searchText)
-    }
-}

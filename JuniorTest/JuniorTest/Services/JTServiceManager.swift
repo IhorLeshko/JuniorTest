@@ -13,9 +13,8 @@ class JTServiceManager {
     private let remoteService: JTRemoteService = .init()
     private let offlineService: JTOfflineService = .init()
     
-    func fetchMovies(withPath apiMoviePath: JTRemoteService.HTTPMoviePath, withGanres ganres: String? = "") -> AnyPublisher<JTMovie, Error> {
-        
-        return remoteService.fetchMovies(withPath: apiMoviePath, withGanres: ganres)
+    func fetchMovies(withPath apiMoviePath: JTRemoteService.HTTPMoviePath, withGenres genres: String? = "") -> AnyPublisher<JTMovie, Error> {
+        return remoteService.fetchMovies(withPath: apiMoviePath, genres: genres)
             .catch { [weak self] error in
                 return self?.offlineService.getOffline(withKey: apiMoviePath) ?? Empty().eraseToAnyPublisher()
             }
@@ -41,7 +40,7 @@ class JTServiceManager {
     }
     
     func fetchMoviesFromMyWatchList() -> AnyPublisher<JTMovie, Error> {
-        return remoteService.fetchMoviesFromMyWatchlist()
+        return remoteService.fetchMoviesFromMyWatchList()
     }
     
     func searchMovies(withKeyLetters letters: String) -> AnyPublisher<JTMovie, Error> {

@@ -22,7 +22,7 @@ class JTHomeViewModel: ObservableObject {
     
     @Published private(set) var movies: [JTMovieResult] = []
     
-    @Published private(set) var moviesInMyWithList: [JTMovieResult] = []
+    @Published private(set) var moviesInMyWatchList: [JTMovieResult] = []
     
     @Published private(set) var searchMovies: [JTMovieResult] = []
     
@@ -53,7 +53,7 @@ class JTHomeViewModel: ObservableObject {
     }
     
     func fetchMoviesWithOffline(withPath apiMoviePath: JTRemoteService.HTTPMoviePath, withGenres genres: String? = "") {
-        serviceManager.fetchMovies(withPath: apiMoviePath, withGanres: genres)
+        serviceManager.fetchMovies(withPath: apiMoviePath, withGenres: genres)
             .sink { completion in
                 switch completion {
                 case .failure(let error):
@@ -71,6 +71,10 @@ class JTHomeViewModel: ObservableObject {
                 case .movieGenresPath:
                     break
                 case .searchMoviesPath:
+                    break
+                case .watchlistPath:
+                    break
+                case .watchlistMoviesPath:
                     break
                 }
             }
@@ -114,10 +118,10 @@ class JTHomeViewModel: ObservableObject {
                 case .finished:
                     print("Successfully fetched watchlist.")
                 case .failure(let error):
-                    print("Error adding to watchlist: \(error)")
+                    print("Error fetching from wishlist: \(error)")
                 }
             } receiveValue: { [weak self] movies in
-                self?.moviesInMyWithList = movies.results
+                self?.moviesInMyWatchList = movies.results
             }
             .store(in: &cancellables)
     }

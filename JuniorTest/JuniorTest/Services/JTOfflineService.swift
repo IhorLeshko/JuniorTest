@@ -11,11 +11,6 @@ import Combine
 class JTOfflineService {
     
     private let defaults = UserDefaults.standard
-    private let userDefaultsKeys: JTRemoteService.HTTPMoviePath = .movieGenresPath
-    
-    init() {
-        
-    }
     
     func saveOffline(movie: JTMovie, withKey userDefaultsKey: JTRemoteService.HTTPMoviePath) {
         if let encoded: Data = try? JSONEncoder().encode(movie) {

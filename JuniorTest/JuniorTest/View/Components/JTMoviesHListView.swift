@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct JTMoviesHorizontalListView: View {
+struct JTMoviesHListView: View {
     
     var moviesData: [JTMovieResult]
     
     @Binding var refreshId: UUID
     
+    @State private var posterURL = "\(JTConstraints.posterHttp)" + "\(JTConstraints.posterLowQualtySetPath)"
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(moviesData, id: \.id) { movie in
-                    
-                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(movie.posterPath!)")) { image in
+                    AsyncImage(url: URL(string:  posterURL + "\(movie.posterPath ?? "")")) { image in
                         image.resizable()
                     } placeholder: {
                         VStack(spacing: 10) {
