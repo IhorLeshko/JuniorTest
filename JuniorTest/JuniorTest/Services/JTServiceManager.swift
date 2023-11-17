@@ -43,4 +43,8 @@ class JTServiceManager {
     func fetchMoviesFromMyWatchList() -> AnyPublisher<JTMovie, Error> {
         return remoteService.fetchMoviesFromMyWatchlist()
     }
+    
+    func searchMovies(withKeyLetters letters: String) -> AnyPublisher<JTMovie, Error> {
+        return remoteService.searchMovies(withKeyLetters: letters)
+    }
 }

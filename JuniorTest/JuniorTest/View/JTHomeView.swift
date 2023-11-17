@@ -15,8 +15,7 @@ struct JTHomeView: View {
     
     @State private var showNetworkAlert = false
     @State private var showNetworkAlertSucsessfull = false
-    
-    @State private var refreshId = UUID()
+    @State var showSearchSheet = false
     @State private var refreshMovieListByGenre = UUID()
     
     var body: some View {
@@ -27,7 +26,7 @@ struct JTHomeView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         
-                        JTHeaderView()
+                        JTHeaderView(showSearchSheet: $showSearchSheet)
                         
                         JTTabView(vm: vm, refreshMovieListByGenre: $refreshMovieListByGenre)
                         
@@ -35,11 +34,11 @@ struct JTHomeView: View {
                         
                         JTListTitleView(title: "Popular Now")
                         
-                        JTMoviesHorizontalListView(moviesData: vm.popularNowMovies, refreshId: $refreshId)
+                        JTMoviesHorizontalListView(moviesData: vm.popularNowMovies, refreshId: $vm.refreshId)
                         
                         JTListTitleView(title: "Movies")
                         
-                        JTMoviesHorizontalListView(moviesData: vm.movies, refreshId: $refreshId)
+                        JTMoviesHorizontalListView(moviesData: vm.movies, refreshId: $vm.refreshId)
                     }
                 }
             }
@@ -49,7 +48,7 @@ struct JTHomeView: View {
                 showNetworkAlert = true
             } else {
                 showNetworkAlertSucsessfull = true
-                refreshId = UUID()
+                vm.refreshId = UUID()
                 refreshMovieListByGenre = UUID()
             }
         }
@@ -57,10 +56,13 @@ struct JTHomeView: View {
             "Network connection seems to be offline.",
             isPresented: $showNetworkAlert
         ) {}
-            .alert(
-                "Network connection seems to be ONLINE.",
-                isPresented: $showNetworkAlertSucsessfull
-            ) {}
+        .alert(
+            "Network connection seems to be ONLINE.",
+            isPresented: $showNetworkAlertSucsessfull
+        ) {}
+        .sheet(isPresented: $showSearchSheet) {
+            JTSearchListView(vm: vm)
+        }
     }
 }
 

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct JTHeaderView: View {
+    @Binding var showSearchSheet: Bool
+    
     var body: some View {
         VStack(spacing: 12) {
             HStack {
@@ -17,7 +19,7 @@ struct JTHeaderView: View {
                 Spacer()
                 
                 Button {
-                    
+                    showSearchSheet.toggle()
                 } label: {
                     Image(systemName: "magnifyingglass")
                 }
@@ -33,6 +35,33 @@ struct JTHeaderView: View {
 #Preview {
     ZStack {
         Color("backgroundColor").ignoresSafeArea()
-        JTHeaderView()
+        JTHeaderView(showSearchSheet: .constant(false))
+    }
+}
+
+struct JTSearchListView: View {
+    @Environment(\.dismiss) var dismiss
+    @ObservedObject var vm: JTHomeViewModel
+    @State private var searchText = ""
+    
+    var body: some View {
+        NavigationStack {
+            List(vm.searchMovies, id: \.id) { movie in
+                Text(movie.title)
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .onChange(of: searchText) { _ in
+                vm.searchMovies(withKeyLetters: searchText)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .searchable(text: $searchText)
     }
 }

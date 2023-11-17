@@ -17,7 +17,7 @@ struct JTMoviesHlistByGenres: View {
     var body: some View {
         TabView {
             ForEach(vm.moviesByGenres, id: \.id) { movie in
-                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w400\(movie.posterPath)")) { image in
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w400\(movie.posterPath!)")) { image in
                     image
                         .resizable()
                         .tag(movie)

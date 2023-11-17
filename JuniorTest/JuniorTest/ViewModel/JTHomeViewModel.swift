@@ -12,6 +12,8 @@ class JTHomeViewModel: ObservableObject {
     
     private var serviceManager: JTServiceManager = .init()
     
+    @Published var refreshId: UUID = UUID()
+    
     @Published private(set) var movieGenres: [JTGenre] = []
     
     @Published private(set) var moviesByGenres: [JTMovieResult] = []
@@ -21,6 +23,8 @@ class JTHomeViewModel: ObservableObject {
     @Published private(set) var movies: [JTMovieResult] = []
     
     @Published private(set) var moviesInMyWithList: [JTMovieResult] = []
+    
+    @Published private(set) var searchMovies: [JTMovieResult] = []
     
     @Published var selectedGenre: Int? = 0 {
         didSet {
@@ -65,6 +69,8 @@ class JTHomeViewModel: ObservableObject {
                 case .searchByCategoryPath:
                     self?.moviesByGenres = returnedMovies.results
                 case .movieGenresPath:
+                    break
+                case .searchMoviesPath:
                     break
                 }
             }
@@ -112,6 +118,21 @@ class JTHomeViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] movies in
                 self?.moviesInMyWithList = movies.results
+            }
+            .store(in: &cancellables)
+    }
+    
+    func searchMovies(withKeyLetters letters: String) {
+        serviceManager.searchMovies(withKeyLetters: letters)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("Successfully fetched search.")
+                case .failure(let error):
+                    print("Error while searching: \(error)")
+                }
+            } receiveValue: { [weak self] movies in
+                self?.searchMovies = movies.results
             }
             .store(in: &cancellables)
     }

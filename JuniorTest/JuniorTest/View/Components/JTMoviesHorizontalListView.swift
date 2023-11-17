@@ -18,7 +18,7 @@ struct JTMoviesHorizontalListView: View {
             HStack {
                 ForEach(moviesData, id: \.id) { movie in
                     
-                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(movie.posterPath)")) { image in
+                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(movie.posterPath!)")) { image in
                         image.resizable()
                     } placeholder: {
                         VStack(spacing: 10) {
