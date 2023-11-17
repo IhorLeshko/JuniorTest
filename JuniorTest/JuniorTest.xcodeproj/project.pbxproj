@@ -26,6 +26,7 @@
 		C3EEEF622B04D1C100FCEE2D /* JTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */; };
 		C3EEEF642B04D44E00FCEE2D /* JTTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */; };
 		C3EEEF662B04DC0D00FCEE2D /* JTMovieGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEEF652B04DC0D00FCEE2D /* JTMovieGenres.swift */; };
+		C3F052292B0765560002DEB2 /* JTLinkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F052282B0765560002DEB2 /* JTLinkButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		C3EEEF612B04D1C100FCEE2D /* JTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHeaderView.swift; sourceTree = "<group>"; };
 		C3EEEF632B04D44E00FCEE2D /* JTTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTTabView.swift; sourceTree = "<group>"; };
 		C3EEEF652B04DC0D00FCEE2D /* JTMovieGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovieGenres.swift; sourceTree = "<group>"; };
+		C3F052282B0765560002DEB2 /* JTLinkButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTLinkButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				C323FA042B05387700D6CD00 /* JTMoviesHorizontalListView.swift */,
 				C323FA062B053AA600D6CD00 /* JTListTitleView.swift */,
 				C3D372B32B0661BC0029A879 /* JTMoviesHlistByGenres.swift */,
+				C3F052282B0765560002DEB2 /* JTLinkButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				C3EEEF662B04DC0D00FCEE2D /* JTMovieGenres.swift in Sources */,
 				C3DC2A832B050641001943C9 /* JTConstraints.swift in Sources */,
 				C3A070532B061D0A00D96ED5 /* JTOfflineService.swift in Sources */,
+				C3F052292B0765560002DEB2 /* JTLinkButtonView.swift in Sources */,
 				C3A070552B061D6B00D96ED5 /* JTServiceManager.swift in Sources */,
 				C3B37E162B04F1870027C909 /* JTMovie.swift in Sources */,
 				C3EEEF5B2B04C1F100FCEE2D /* JTHomeView.swift in Sources */,

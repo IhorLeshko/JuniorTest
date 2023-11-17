@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct JTMoviesHlistByGenres: View {
+    @Environment(\.openURL) var openURL
+    
     var vm: JTHomeViewModel
     var geometryProxy: GeometryProxy
     @Binding var refreshMovieListByGenre: UUID
@@ -24,11 +26,14 @@ struct JTMoviesHlistByGenres: View {
                         )
                         .overlay {
                             VStack {
+                                
                                 Spacer()
+                                
                                 Text(movie.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                     .padding(.horizontal)
+                                
                                 HStack(spacing: 4) {
                                     ForEach(Array(movie.genreIDS.enumerated()), id: \.element) { index, genreID in
                                         if let genreName = vm.movieGenres.first(where: { $0.id == genreID })?.name {
@@ -47,18 +52,8 @@ struct JTMoviesHlistByGenres: View {
                                 .padding(.bottom)
                                 
                                 HStack {
-                                    Button {
-                                        
-                                    } label: {
-                                        Label("Play", systemImage: "play.circle")
-                                            .fontWeight(.semibold)
-                                            .frame(width: 110, height: 40)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 25)
-                                                    .fill()
-                                                    .foregroundStyle(Color("buttonColor"))
-                                            )
-                                    }
+                                    JTLinkButtonView(movieId: "\(movie.id)")
+                                    
                                     Button {
                                         
                                     } label: {
