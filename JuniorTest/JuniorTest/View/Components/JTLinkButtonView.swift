@@ -12,7 +12,7 @@ struct JTLinkButtonView: View {
     var movieId: String
     
     var body: some View {
-        Link(destination: URL(string: "\(JTConstraints.externalHttp)" + "movie/\(movieId)")!) {
+        Link(destination: URL(string: "\(JTConstants.webSiteURL)" + "movie/\(movieId)")!) {
             Label("Play", systemImage: "play.circle")
                 .fontWeight(.semibold)
                 .frame(width: 110, height: 40)

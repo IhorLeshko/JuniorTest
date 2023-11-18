@@ -17,7 +17,7 @@ struct JTListTitleView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .fontWeight(.semibold)
             .padding(.vertical, 10)
-            .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
+            .padding(.horizontal, JTConstants.horizontalPaddingOnHomeView)
     }
 }
 

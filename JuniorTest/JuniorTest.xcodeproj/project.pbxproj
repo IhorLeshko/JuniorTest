@@ -21,7 +21,7 @@
 		C3B37E142B04ECD70027C909 /* JTHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */; };
 		C3B37E162B04F1870027C909 /* JTMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B37E152B04F1870027C909 /* JTMovie.swift */; };
 		C3D372B42B0661BC0029A879 /* JTMoviesHlistByGenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D372B32B0661BC0029A879 /* JTMoviesHlistByGenresView.swift */; };
-		C3DC2A832B050641001943C9 /* JTConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC2A822B050641001943C9 /* JTConstraints.swift */; };
+		C3DC2A832B050641001943C9 /* JTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC2A822B050641001943C9 /* JTConstants.swift */; };
 		C3EE510C2B07FDF900AD8B39 /* JTMovieCardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE510B2B07FDF900AD8B39 /* JTMovieCardButtonsView.swift */; };
 		C3EE510E2B07FE8E00AD8B39 /* JTGenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE510D2B07FE8E00AD8B39 /* JTGenreListView.swift */; };
 		C3EE51102B07FEBE00AD8B39 /* JTMovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE510F2B07FEBE00AD8B39 /* JTMovieCardView.swift */; };
@@ -49,7 +49,7 @@
 		C3B37E132B04ECD70027C909 /* JTHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTHomeViewModel.swift; sourceTree = "<group>"; };
 		C3B37E152B04F1870027C909 /* JTMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovie.swift; sourceTree = "<group>"; };
 		C3D372B32B0661BC0029A879 /* JTMoviesHlistByGenresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMoviesHlistByGenresView.swift; sourceTree = "<group>"; };
-		C3DC2A822B050641001943C9 /* JTConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTConstraints.swift; sourceTree = "<group>"; };
+		C3DC2A822B050641001943C9 /* JTConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTConstants.swift; sourceTree = "<group>"; };
 		C3EE510B2B07FDF900AD8B39 /* JTMovieCardButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovieCardButtonsView.swift; sourceTree = "<group>"; };
 		C3EE510D2B07FE8E00AD8B39 /* JTGenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTGenreListView.swift; sourceTree = "<group>"; };
 		C3EE510F2B07FEBE00AD8B39 /* JTMovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMovieCardView.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		C3DC2A812B05062F001943C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C3DC2A822B050641001943C9 /* JTConstraints.swift */,
+				C3DC2A822B050641001943C9 /* JTConstants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				C3A079ED2B04BEB50074C3BF /* Persistence.swift in Sources */,
 				C3EEEF662B04DC0D00FCEE2D /* JTMovieGenres.swift in Sources */,
 				C3EE51102B07FEBE00AD8B39 /* JTMovieCardView.swift in Sources */,
-				C3DC2A832B050641001943C9 /* JTConstraints.swift in Sources */,
+				C3DC2A832B050641001943C9 /* JTConstants.swift in Sources */,
 				C3A070532B061D0A00D96ED5 /* JTOfflineService.swift in Sources */,
 				C3F052292B0765560002DEB2 /* JTLinkButtonView.swift in Sources */,
 				C3A070552B061D6B00D96ED5 /* JTServiceManager.swift in Sources */,

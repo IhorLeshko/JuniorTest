@@ -9,16 +9,16 @@ import SwiftUI
 
 struct JTMoviesHlistByGenresView: View {
     @Environment(\.openURL) var openURL
-    @ObservedObject var vm: JTHomeViewModel
+    @ObservedObject var viewModel: JTHomeViewModel
     var geometryProxy: GeometryProxy
     @Binding var refreshMovieListByGenre: UUID
     
     var body: some View {
         TabView {
-            ForEach(vm.moviesByGenres, id: \.id) { movie in
-                JTMovieCardView(movie: movie, vm: vm, refreshMovieListByGenre: $refreshMovieListByGenre)
+            ForEach(viewModel.moviesByGenres, id: \.id) { movie in
+                JTMovieCardView(movie: movie, viewModel: viewModel, refreshMovieListByGenre: $refreshMovieListByGenre)
             }
-            .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
+            .padding(.horizontal, JTConstants.horizontalPaddingOnHomeView)
         }
         .id(refreshMovieListByGenre)
         .tabViewStyle(.page(indexDisplayMode: .never))
@@ -29,7 +29,7 @@ struct JTMoviesHlistByGenresView: View {
 
 #Preview {
     GeometryReader { proxy in
-        JTMoviesHlistByGenresView(vm: JTHomeViewModel(), geometryProxy: proxy, refreshMovieListByGenre: .constant(UUID()))
+        JTMoviesHlistByGenresView(viewModel: JTHomeViewModel(), geometryProxy: proxy, refreshMovieListByGenre: .constant(UUID()))
     }
 }
 

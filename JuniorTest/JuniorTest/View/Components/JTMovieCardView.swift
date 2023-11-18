@@ -9,10 +9,10 @@ import SwiftUI
 
 struct JTMovieCardView: View {
     var movie: JTMovieResult
-    @ObservedObject var vm: JTHomeViewModel
+    @ObservedObject var viewModel: JTHomeViewModel
     @Binding var refreshMovieListByGenre: UUID
     
-    @State private var posterURL = "\(JTConstraints.posterHttp)" + "\(JTConstraints.posterHightQualtySetPath)"
+    @State private var posterURL = "\(JTConstants.posterURL)" + "\(JTConstants.posterHightQualtySetPath)"
 
     var body: some View {
         AsyncImage(url: URL(string: posterURL + "\(movie.posterPath ?? "")")) { image in
@@ -31,9 +31,9 @@ struct JTMovieCardView: View {
                             .fontWeight(.semibold)
                             .padding(.horizontal)
 
-                        JTGenreListView(genreIDs: movie.genreIDS, vm: vm)
+                        JTGenreListView(genreIDs: movie.genreIDS, viewModel: viewModel)
 
-                        JTMovieCardButtonsView(movie: movie, vm: vm)
+                        JTMovieCardButtonsView(movie: movie, viewModel: viewModel)
                     }
                     .foregroundStyle(.white)
                     .padding(.bottom)
@@ -59,5 +59,5 @@ struct JTMovieCardView: View {
 }
 
 #Preview {
-    JTMovieCardView(movie: JTConstraints.movieResultMock, vm: JTHomeViewModel(), refreshMovieListByGenre: .constant(UUID()))
+    JTMovieCardView(movie: JTConstants.movieResultMock, viewModel: JTHomeViewModel(), refreshMovieListByGenre: .constant(UUID()))
 }

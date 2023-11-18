@@ -8,31 +8,31 @@
 import SwiftUI
 
 struct JTTabView: View {
-    @ObservedObject var vm: JTHomeViewModel
+    @ObservedObject var viewModel: JTHomeViewModel
     @Binding var refreshMovieListByGenre: UUID
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 Button {
-                    vm.selectedGenre = 0
+                    viewModel.selectedGenre = 0
                     refreshMovieListByGenre = UUID()
                 } label: {
                     Text("All")
-                        .tabButtonStyle(vm: vm)
+                        .tabButtonStyle(vm: viewModel)
                 }
                 
-                ForEach(vm.movieGenres, id: \.id) { tab in
+                ForEach(viewModel.movieGenres, id: \.id) { tab in
                     Button {
-                        vm.selectedGenre = tab.id
+                        viewModel.selectedGenre = tab.id
                         refreshMovieListByGenre = UUID()
                     } label: {
                         Text(tab.name)
-                            .tabButtonStyle(vm: vm, tabID: tab.id)
+                            .tabButtonStyle(vm: viewModel, tabID: tab.id)
                     }
                 }
             }
-            .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
+            .padding(.horizontal, JTConstants.horizontalPaddingOnHomeView)
         }
     }
 }
@@ -40,7 +40,7 @@ struct JTTabView: View {
 #Preview {
     ZStack {
         Color("backgroundColor").ignoresSafeArea()
-        JTTabView(vm: JTHomeViewModel(), refreshMovieListByGenre: .constant(UUID()))
+        JTTabView(viewModel: JTHomeViewModel(), refreshMovieListByGenre: .constant(UUID()))
     }
 }
 

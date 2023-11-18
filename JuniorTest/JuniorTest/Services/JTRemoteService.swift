@@ -60,7 +60,7 @@ class JTRemoteService {
         if httpMethod == "POST" {
             request.addValue("application/json", forHTTPHeaderField: "content-type")
         }
-        request.addValue(JTConstraints.apiKey, forHTTPHeaderField: "Authorization")
+        request.addValue(JTConstants.apiKey, forHTTPHeaderField: "Authorization")
         
         if let parameters = parameters {
             do {
@@ -76,7 +76,7 @@ class JTRemoteService {
     
     func fetchData<T: Decodable>(withPath path: HTTPMoviePath, httpMethod: String, parameters: [String: Any]? = nil, genres: String? = "") -> AnyPublisher<T, Error> {
         
-        let url = "\(JTConstraints.http)" + "\(path.rawValue)" + "\(genres ?? "")"
+        let url = "\(JTConstants.apiURL)" + "\(path.rawValue)" + "\(genres ?? "")"
         let request = createRequest(urlString: url, httpMethod: httpMethod, parameters: parameters)
         
         return URLSession.shared.dataTaskPublisher(for: request)
@@ -112,7 +112,7 @@ class JTRemoteService {
             
         ] as [String : Any]
         
-        let request = createRequest(urlString: "\(JTConstraints.http)" + "\(HTTPMoviePath.watchlistPath.rawValue)", httpMethod: "POST", parameters: parameters)
+        let request = createRequest(urlString: "\(JTConstants.apiURL)" + "\(HTTPMoviePath.watchlistPath.rawValue)", httpMethod: "POST", parameters: parameters)
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .subscribe(on: DispatchQueue.global(qos: .background))

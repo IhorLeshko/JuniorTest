@@ -9,12 +9,12 @@ import SwiftUI
 
 struct JTGenreListView: View {
     var genreIDs: [Int]
-    @ObservedObject var vm: JTHomeViewModel
+    @ObservedObject var viewModel: JTHomeViewModel
 
     var body: some View {
         HStack(spacing: 4) {
             ForEach(Array(genreIDs.enumerated()), id: \.element) { index, genreID in
-                if let genreName = vm.movieGenres.first(where: { $0.id == genreID })?.name {
+                if let genreName = viewModel.movieGenres.first(where: { $0.id == genreID })?.name {
                     Text(genreName)
                         .font(.caption)
                         .multilineTextAlignment(.center)
@@ -32,5 +32,5 @@ struct JTGenreListView: View {
 }
 
 #Preview {
-    JTGenreListView(genreIDs: [18], vm: JTHomeViewModel())
+    JTGenreListView(genreIDs: [18], viewModel: JTHomeViewModel())
 }

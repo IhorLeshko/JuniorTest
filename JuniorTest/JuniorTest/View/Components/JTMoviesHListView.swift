@@ -13,7 +13,7 @@ struct JTMoviesHListView: View {
     
     @Binding var refreshId: UUID
     
-    @State private var posterURL = "\(JTConstraints.posterHttp)" + "\(JTConstraints.posterLowQualtySetPath)"
+    @State private var posterURL = "\(JTConstants.posterURL)" + "\(JTConstants.posterLowQualtySetPath)"
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -36,7 +36,7 @@ struct JTMoviesHListView: View {
                     )
                 }
             }
-            .padding(.horizontal, JTConstraints.horizontalPaddingOnHomeView)
+            .padding(.horizontal, JTConstants.horizontalPaddingOnHomeView)
         }
         .id(refreshId)
     }

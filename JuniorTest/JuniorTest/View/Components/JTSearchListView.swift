@@ -9,18 +9,18 @@ import SwiftUI
 
 struct JTSearchListView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var vm: JTHomeViewModel
+    @ObservedObject var viewModel: JTHomeViewModel
     @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
-            List(vm.searchMovies, id: \.id) { movie in
+            List(viewModel.searchMovies, id: \.id) { movie in
                 Text(movie.title)
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .onChange(of: searchText) { _ in
-                vm.searchMovies(withKeyLetters: searchText)
+                viewModel.searchMovies(withKeyLetters: searchText)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -35,5 +35,5 @@ struct JTSearchListView: View {
 }
 
 #Preview {
-    JTSearchListView(vm: JTHomeViewModel())
+    JTSearchListView(viewModel: JTHomeViewModel())
 }

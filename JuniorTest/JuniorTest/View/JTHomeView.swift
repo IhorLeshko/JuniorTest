@@ -29,9 +29,9 @@ struct JTHomeView: View {
                         
                         JTHeaderView(showSearchSheet: $showSearchSheet)
                         
-                        JTTabView(vm: vm, refreshMovieListByGenre: $refreshMovieListByGenre)
+                        JTTabView(viewModel: vm, refreshMovieListByGenre: $refreshMovieListByGenre)
                         
-                        JTMoviesHlistByGenresView(vm: vm, geometryProxy: geo, refreshMovieListByGenre: $refreshMovieListByGenre)
+                        JTMoviesHlistByGenresView(viewModel: vm, geometryProxy: geo, refreshMovieListByGenre: $refreshMovieListByGenre)
                         
                         JTListTitleView(title: "Popular Now")
                         
@@ -62,7 +62,7 @@ struct JTHomeView: View {
             isPresented: $showNetworkAlertSucsessfull
         ) {}
         .sheet(isPresented: $showSearchSheet) {
-            JTSearchListView(vm: vm)
+            JTSearchListView(viewModel: vm)
         }
     }
 }

@@ -9,21 +9,21 @@ import SwiftUI
 
 struct JTMovieCardButtonsView: View {
     var movie: JTMovieResult
-    @ObservedObject var vm: JTHomeViewModel
+    @ObservedObject var viewModel: JTHomeViewModel
 
     var body: some View {
         HStack {
             JTLinkButtonView(movieId: "\(movie.id)")
 
             Button {
-                vm.addMovieToWatchList(movieID: movie.id)
+                viewModel.addMovieToWatchList(movieID: movie.id)
             } label: {
-                Label("My list", systemImage: vm.moviesInMyWatchList.contains { $0.id == movie.id } ? "checkmark" : "plus.circle")
+                Label("My list", systemImage: viewModel.moviesInMyWatchList.contains { $0.id == movie.id } ? "checkmark" : "plus.circle")
                     .fontWeight(.semibold)
                     .frame(width: 110, height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 25)
-                            .strokeBorder(vm.moviesInMyWatchList.contains { $0.id == movie.id } ? .green : .white, lineWidth: 1)
+                            .strokeBorder(viewModel.moviesInMyWatchList.contains { $0.id == movie.id } ? .green : .white, lineWidth: 1)
                     )
             }
         }
@@ -31,5 +31,5 @@ struct JTMovieCardButtonsView: View {
 }
 
 #Preview {
-    JTMovieCardButtonsView(movie: JTConstraints.movieResultMock, vm: JTHomeViewModel())
+    JTMovieCardButtonsView(movie: JTConstants.movieResultMock, viewModel: JTHomeViewModel())
 }
