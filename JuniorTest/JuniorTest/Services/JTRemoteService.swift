@@ -8,7 +8,8 @@
 import Foundation
 import Combine
 
-class JTRemoteService {
+final class JTRemoteService {
+    private let jsonDecoder = JSONDecoder()
     
     enum HTTPMoviePath {
         case popularPath
@@ -46,7 +47,7 @@ class JTRemoteService {
         }
     }
     
-    func createRequest(urlString: String, httpMethod: String, parameters: [String: Any]? = nil) -> URLRequest {
+    private func createRequest(urlString: String, httpMethod: String, parameters: [String: Any]? = nil) -> URLRequest {
         
         guard let url = URL(string: urlString) else {
             fatalError("Invalid URL")
@@ -74,7 +75,7 @@ class JTRemoteService {
         return request
     }
     
-    func fetchData<T: Decodable>(withPath path: HTTPMoviePath, httpMethod: String, parameters: [String: Any]? = nil, genres: String? = "") -> AnyPublisher<T, Error> {
+    private func fetchData<T: Decodable>(withPath path: HTTPMoviePath, httpMethod: String, parameters: [String: Any]? = nil, genres: String? = "") -> AnyPublisher<T, Error> {
         
         let url = "\(JTConstants.apiURL)" + "\(path.rawValue)" + "\(genres ?? "")"
         let request = createRequest(urlString: url, httpMethod: httpMethod, parameters: parameters)
@@ -91,7 +92,7 @@ class JTRemoteService {
                 
                 return data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: jsonDecoder)
             .eraseToAnyPublisher()
     }
     

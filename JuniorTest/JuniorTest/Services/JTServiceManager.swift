@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class JTServiceManager {
+final class JTServiceManager {
     
     private let remoteService: JTRemoteService = .init()
     private let offlineService: JTOfflineService = .init()

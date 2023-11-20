@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class JTOfflineService {
+final class JTOfflineService {
     
     private let defaults = UserDefaults.standard
     

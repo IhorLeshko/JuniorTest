@@ -32,7 +32,7 @@ class JTHomeViewModel: ObservableObject {
         }
     }
     
-    var selectedGenrePath: String {
+    private var selectedGenrePath: String {
         let path = "&with_genres="
         
         if let id = selectedGenre, id != 0 {
